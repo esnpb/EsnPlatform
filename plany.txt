@@ -1,0 +1,4 @@
+- projekt w node.js, mongoDB i react lub angular
+- mo¿liwy import listy erasmusów z Excela do bazy
+- mo¿liwe usuwanie/dodawanie nowych wpisów z poziomu panelu admina
+- logowanie z Galaxy?

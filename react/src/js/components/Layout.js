@@ -6,6 +6,9 @@ import { erasmusActions } from "../actions/erasmusActions";
 import { memberActions } from "../actions/memberActions";
 import { errorActions } from "../actions/errorActions";
 
+import Navbar from "./Navbar";
+
+
 @connect((store) => { //@ decorator działa jak [Attribute] w .NET
     var { members, erasmuses, countries, errors } = store;
     return { //ten obiekt będzie == this.props wewnatrz Layouta poniżej
@@ -20,7 +23,8 @@ export default class Layout extends React.Component {
         //this.props.dispatch(fetchUser());
     }
     render(){
-        //console.log("render user", this.props.user.name);
-        return <h1>elo</h1>;
+        return (
+            <Navbar />
+        );
     }
 }

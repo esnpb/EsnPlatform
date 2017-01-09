@@ -9,13 +9,13 @@ export default class SidebarItem extends React.Component {
     render(){
         const item = this.props;
         const children = item.items && item.items.length > 0 ? item.items.map((obj) => {             
-            return (<SidebarItem key={ obj.key } level={ obj.level } title={ obj.title } icon={ item.icon } href={ obj.href } items={ obj.items } />); 
+            return (<SidebarItem key={ obj.key } level={ obj.level } title={ obj.title } icon={ obj.icon } href={ obj.href } items={ obj.items } />); 
         }) : [];
         
         return(
             <li key={ item.key }>
                 <a href={ item.href }>
-                    <i class={ "fa fa-fw " + item.icon }></i>
+                    { item.icon ? <i class={ "fa fa-fw " + item.icon }></i> : "" }
                     { item.title }
                     { item.items && item.items.length > 0 ? <span class="fa arrow"></span> : "" }
                 </a>

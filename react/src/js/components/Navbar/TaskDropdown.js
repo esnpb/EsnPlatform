@@ -9,12 +9,6 @@ export default class TaskDropdown extends React.Component {
     }
     
     render(){
-        const progressBarStyle20 = { width: "20%" };
-        const progressBarStyle40 = { width: "40%" };
-        const progressBarStyle60 = { width: "60%" };
-        const progressBarStyle80 = { width: "80%" };
-        const progressBarStyle100 = { width: "100%" };
-        
         const dropItems = [
             { key: 1, type: "progressbar", title: "Task 1", href: "#", progress: { val: 40, minval: 0, maxval: 100, type: "success" } },
             { key: 2, type: "divider" },

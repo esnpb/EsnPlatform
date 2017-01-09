@@ -21,7 +21,6 @@ export default class DropdownItem extends React.Component {
                 );
             }
             case "message": {
-                console.log("item> ", item);
                 return (
                     <MessageDropdownItem key={ item.key } title={ item.title } text={ item.text } href={ item.href } timestamp={ item.timestamp } />
                 );

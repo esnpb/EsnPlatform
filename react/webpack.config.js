@@ -7,11 +7,18 @@ module.exports = {
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./js/app.js",
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
+    ],
     loaders: [
       {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: ['babel-loader', 'eslint-loader'],
+        loader: ['babel-loader'],
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],

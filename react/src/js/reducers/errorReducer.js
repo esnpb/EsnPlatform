@@ -1,8 +1,11 @@
-export default function reducer(state={}, action) {
-    switch(action.type) {
-        case "ERROR": {
-            throw new Error("OH NO!");
-        }
+export default function reducer(state = {}, action) {
+  switch (action.type) {
+    case 'ERROR': {
+      throw new Error('OH NO!');
     }
-    return state;
-};
+    default: {
+      break;
+    }
+  }
+  return state;
+}

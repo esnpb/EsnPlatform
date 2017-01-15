@@ -48,7 +48,7 @@ export default [
           { key: 20, level: 2, href: '#', title: 'Third Level Item' },
           { key: 21, level: 2, href: '#', title: 'Third Level Item' },
         ],
-      }
+      },
     ],
   },
   {

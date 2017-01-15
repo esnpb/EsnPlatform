@@ -1,13 +1,18 @@
 {
-    "parser": "babel-eslint",
-    "extends": "airbnb",
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        /*override airbnb rule*/
-        'linebreak-style': ['error', 'windows'],
-        'jsx-quotes': ['error', 'prefer-double'],
-        'react/no-unknown-property': [2, { 'ignore': ['class', 'for'] }]
-    }
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    /*override airbnb rule*/
+    'linebreak-style': ['error', 'windows'],
+    'jsx-quotes': ['error', 'prefer-double'],
+    'react/no-unknown-property': [2, { 'ignore': ['class', 'for'] }],
+  },
+  'globals': {
+    'window': true,
+    'document': true,
+    'throwError': true,
+  }
 }

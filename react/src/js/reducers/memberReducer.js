@@ -3,10 +3,11 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  let newState = null;
   switch (action.type) {
     case 'ADD_MEMBER': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           members: [...state.members.concat(action.payload)],
         };
@@ -17,7 +18,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'REMOVE_MEMBER': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           members: [...state.members.filter(obj => action.payload.id !== obj.id)],
         };
@@ -28,7 +29,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'UPDATE_MEMBER': {
       if (action.payload.id > 0) {
-        state = {
+        newState = {
           ...state,
           members: state.members.map((obj) => {
             if (obj.id !== action.payload.id) {
@@ -46,7 +47,7 @@ export default function reducer(state = initialState, action) {
       break;
     }
     case 'FETCH_MEMBER_FULFILLED': {
-      state = { ...state, user: action.payload };
+      newState = { ...state, user: action.payload };
       break;
     }
     case 'FETCH_MEMBER_ERROR': {
@@ -56,5 +57,5 @@ export default function reducer(state = initialState, action) {
       break;
     }
   }
-  return state;
+  return newState;
 }

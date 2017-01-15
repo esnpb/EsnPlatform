@@ -3,10 +3,11 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  let newState = null;
   switch (action.type) {
     case 'ADD_COUNTRY': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           countries: [...state.countries.concat(action.payload)],
         };
@@ -15,7 +16,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'REMOVE_COUNTRY': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           countries: [...state.countries.filter(obj => action.payload.id !== obj.id)],
         };
@@ -24,7 +25,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'UPDATE_COUNTRY': {
       if (action.payload.id > 0) {
-        state = {
+        newState = {
           ...state,
           countries: state.countries.map((obj) => {
             if (obj.id !== action.payload.id) {
@@ -40,7 +41,7 @@ export default function reducer(state = initialState, action) {
       break;
     }
     case 'FETCH_COUNTRY_FULFILLED': {
-      state = { ...state, user: action.payload };
+      newState = { ...state, user: action.payload };
       break;
     }
     case 'FETCH_COUNTRY_ERROR': {
@@ -50,5 +51,5 @@ export default function reducer(state = initialState, action) {
       break;
     }
   }
-  return state;
+  return newState;
 }

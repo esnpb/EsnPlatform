@@ -23,9 +23,6 @@ export default function DropdownItem(props) {
       );
     }
     case 'progressbar': {
-      if (!props.progress) {
-        throwError('Progress nie istnieje w props');
-      }
       return (
         <ProgressBarDropdownItem {...props} />
       );
@@ -45,3 +42,11 @@ export default function DropdownItem(props) {
     }
   }
 }
+
+DropdownItem.propTypes = {
+  type: React.PropTypes.string.isRequired,
+};
+
+DropdownItem.defaultProps = {
+  progress: null,
+};

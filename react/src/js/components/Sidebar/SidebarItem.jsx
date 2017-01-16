@@ -38,3 +38,18 @@ export default function SidebarItem(props) {
     </li>
   );
 }
+
+SidebarItem.propTypes = {
+  key: React.PropTypes.number.isRequired,
+  items: React.PropTypes.arrayOf(React.PropTypes.object),
+  icon: React.PropTypes.string,
+  level: React.PropTypes.number,
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};
+
+SidebarItem.defaultProps = {
+  items: null,
+  icon: '',
+  level: 0,
+};

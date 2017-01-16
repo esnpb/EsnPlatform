@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function ProgressBarDropdownItem(props) {
   const progress = props.progress;
-  console.log('progress', progress);
-  console.log('props', props);
   const progressBarStyle = {
     width: `${progress.val}%`,
   };
@@ -39,3 +37,14 @@ export default function ProgressBarDropdownItem(props) {
     </li>
   );
 }
+
+ProgressBarDropdownItem.propTypes = {
+  progress: React.PropTypes.shape({
+    type: React.PropTypes.string.isRequired,
+    val: React.PropTypes.number.isRequired,
+    maxval: React.PropTypes.number.isRequired,
+    minval: React.PropTypes.number.isRequired,
+  }).isRequired,
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};

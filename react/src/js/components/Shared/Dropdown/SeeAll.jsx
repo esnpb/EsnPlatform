@@ -10,3 +10,8 @@ export default function SeeAllDropdownItem(props) {
     </li>
   );
 }
+
+SeeAllDropdownItem.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};

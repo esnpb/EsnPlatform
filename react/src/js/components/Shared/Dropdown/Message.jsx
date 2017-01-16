@@ -16,3 +16,10 @@ export default function MessageDropdownItem(props) {
     </li>
   );
 }
+
+MessageDropdownItem.propTypes = {
+  timestamp: React.PropTypes.string.isRequired,
+  text: React.PropTypes.number.isRequired,
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};

@@ -11,3 +11,13 @@ export default function ButtonDropdownItem(props) {
     </li>
   );
 }
+
+ButtonDropdownItem.propTypes = {
+  icon: React.PropTypes.string,
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};
+
+ButtonDropdownItem.defaultProps = {
+  icon: '',
+};

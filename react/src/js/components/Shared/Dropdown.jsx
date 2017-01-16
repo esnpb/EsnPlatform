@@ -18,3 +18,15 @@ export default function Dropdown(props) {
     </li>
   );
 }
+
+Dropdown.propTypes = {
+  dropItems: React.PropTypes.arrayOf(React.PropTypes.object),
+  dropButtonClass: React.PropTypes.string,
+  dropdownClass: React.PropTypes.string,
+};
+
+Dropdown.defaultProps = {
+  dropItems: null,
+  dropButtonClass: '',
+  dropdownClass: '',
+};

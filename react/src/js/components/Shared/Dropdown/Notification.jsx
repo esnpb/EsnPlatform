@@ -17,3 +17,14 @@ export default function NotificationDropdownItem(props) {
     </li>
   );
 }
+
+NotificationDropdownItem.propTypes = {
+  timestamp: React.PropTypes.string.isRequired,
+  icon: React.PropTypes.string,
+  title: React.PropTypes.string.isRequired,
+  href: React.PropTypes.string.isRequired,
+};
+
+NotificationDropdownItem.defaultProps = {
+  icon: '',
+};

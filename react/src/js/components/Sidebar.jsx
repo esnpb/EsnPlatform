@@ -5,15 +5,10 @@ import MenuItemTree from './Sidebar/MenuItemTree';
 
 export default function Sidebar() {
   const itemsTree = MenuItemTree;
-  const sidebarItemTree = itemsTree && itemsTree.length > 0 ? itemsTree.map(item =>
-    <SidebarItem
-      key={item.key}
-      level={item.level}
-      title={item.title}
-      icon={item.icon}
-      href={item.href}
-      items={item.items}
-    />) : [];
+  const sidebarItemTree =
+    itemsTree && itemsTree.length > 0 ?
+      itemsTree.map(item => <SidebarItem {...item} />) :
+      [];
   return (
     <div class="navbar-default sidebar" role="navigation">
       <div class="sidebar-nav navbar-collapse">

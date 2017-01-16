@@ -1,17 +1,17 @@
 import React from 'react';
+import timeago from 'timeago-words';
 
 export default function MessageDropdownItem(props) {
-  const item = props;
   return (
     <li>
-      <a href={item.href}>
+      <a href={props.href}>
         <div>
-          <strong>{item.title}</strong>
+          <strong>{props.title}</strong>
           <span class="pull-right text-muted">
-            <em>{item.timestamp}</em>
+            <em>{timeago(new Date(props.timestamp), { language: 'pl' })}</em>
           </span>
         </div>
-        <div>{item.text}</div>
+        <div>{props.text}</div>
       </a>
     </li>
   );

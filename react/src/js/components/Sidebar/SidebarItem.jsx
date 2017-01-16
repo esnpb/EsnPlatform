@@ -1,6 +1,6 @@
 import React from 'react';
 
-function intToOrderText(number) {
+function intToOrdinalText(number) {
   switch (number) {
     case 0:
       return 'zero';
@@ -19,25 +19,19 @@ function intToOrderText(number) {
 }
 
 export default function SidebarItem(props) {
-  const item = props;
-  const children = item.items && item.items.length > 0 ? item.items.map(obj =>
-    <SidebarItem
-      key={obj.key}
-      level={obj.level}
-      title={obj.title}
-      icon={obj.icon}
-      href={obj.href}
-      items={obj.items}
-    />) : [];
+  const children = props.items && props.items.length > 0 ? props.items.map(obj =>
+    <SidebarItem {...obj} />) : [];
+  const iconClass = `fa fa-fw ${props.icon}`;
+  const levelClass = `nav nav-${intToOrdinalText(props.level + 2)}-level`;
   return (
-    <li key={item.key}>
-      <a href={item.href}>
-        { item.icon ? <i class="fa fa-fw {item.icon}" /> : '' }
-        {item.title}
-        { item.items && item.items.length > 0 ? <span class="fa arrow" /> : '' }
+    <li key={props.key}>
+      <a href={props.href}>
+        { props.icon ? <i class={iconClass} /> : '' }
+        {props.title}
+        { props.items && props.items.length > 0 ? <span class="fa arrow" /> : '' }
       </a>
-      { item.items && item.items.length > 0 ?
-        <ul class={`nav nav-${intToOrderText(item.level + 2)}-level`}>
+      { props.items && props.items.length > 0 ?
+        <ul class={levelClass}>
           {children}
         </ul>
       : '' }

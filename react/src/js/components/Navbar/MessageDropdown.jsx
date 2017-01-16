@@ -12,6 +12,10 @@ export default function MessageDropdown() {
     { key: 7, type: 'see-all', title: 'Read All Messages', href: '#' },
   ];
   return (
-    <Dropdown dropButtonClass="fa-envelope" dropdownClass="dropdown-messages" dropItems={dropItems} />
+    <Dropdown
+      dropButtonClass="fa-envelope"
+      dropdownClass="dropdown-messages"
+      dropItems={dropItems}
+    />
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 
 export default function ButtonDropdownItem(props) {
-  const item = props;
+  const iconClass = `fa fa-fw ${props.icon}`;
   return (
     <li>
-      <a href={item.href}>
-        <i class="fa fa-fw {item.icon}" />
-        {item.title}
+      <a href={props.href}>
+        <i class={iconClass} />
+        {props.title}
       </a>
     </li>
   );

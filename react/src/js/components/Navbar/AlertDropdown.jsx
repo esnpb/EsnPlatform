@@ -16,6 +16,10 @@ export default function AlertDropdown() {
     { key: 11, type: 'see-all', title: 'See All Alerts', href: '#' },
   ];
   return (
-    <Dropdown dropButtonClass="fa-bell" dropdownClass="dropdown-alerts" dropItems={dropItems} />
+    <Dropdown
+      dropButtonClass="fa-bell"
+      dropdownClass="dropdown-alerts"
+      dropItems={dropItems}
+    />
   );
 }

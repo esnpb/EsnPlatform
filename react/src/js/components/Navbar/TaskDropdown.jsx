@@ -14,6 +14,10 @@ export default function TaskDropdown() {
     { key: 9, type: 'see-all', title: 'See All Tasks', href: '#' },
   ];
   return (
-    <Dropdown dropButtonClass="fa-tasks" dropdownClass="dropdown-tasks" dropItems={dropItems} />
+    <Dropdown
+      dropButtonClass="fa-tasks"
+      dropdownClass="dropdown-tasks"
+      dropItems={dropItems}
+    />
   );
 }

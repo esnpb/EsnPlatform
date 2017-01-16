@@ -1,15 +1,16 @@
 import React from 'react';
+import timeago from 'timeago-words';
 
 export default function NotificationDropdownItem(props) {
-  const item = props;
+  const iconClass = `fa fa-fw ${props.icon}`;
   return (
     <li>
-      <a href={item.href}>
+      <a href={props.href}>
         <div>
-          <i class="fa fa-fw {item.icon}" />
-          {item.title}
+          <i class={iconClass} />
+          {props.title}
           <span class="pull-right text-muted small">
-            {item.timestamp}
+            {timeago(new Date(props.timestamp))}
           </span>
         </div>
       </a>

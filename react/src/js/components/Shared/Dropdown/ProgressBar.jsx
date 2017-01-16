@@ -1,31 +1,36 @@
 import React from 'react';
 
 export default function ProgressBarDropdownItem(props) {
-  const item = props;
+  const progress = props.progress;
+  console.log('progress', progress);
+  console.log('props', props);
   const progressBarStyle = {
-    width: `${item.value}%`,
+    width: `${progress.val}%`,
   };
+  const typeClass = `progress-bar progress-bar-${progress.type}`;
+  const percentCompleteTitle = `${progress.val}% Complete`;
+  const percentCompleteLabel = `${percentCompleteTitle} (${progress.type})`;
   return (
     <li>
-      <a href={item.href}>
+      <a href={props.href}>
         <div>
           <p>
-            <strong>{item.title}</strong>
+            <strong>{props.title}</strong>
             <span class="pull-right text-muted">
-              `${item.value}% Complete`
+              {percentCompleteTitle}
             </span>
           </p>
           <div class="progress progress-striped active">
             <div
-              class="progress-bar progress-bar-{item.type}"
+              class={typeClass}
               role="progressbar"
-              aria-valuenow={item.value}
-              aria-valuemin={item.minval}
-              aria-valuemax={item.maxval}
+              aria-valuenow={progress.val}
+              aria-valuemin={progress.minval}
+              aria-valuemax={progress.maxval}
               style={progressBarStyle}
             >
               <span class="sr-only">
-                `${item.val}% Complete (${item.type})`
+                {percentCompleteLabel}
               </span>
             </div>
           </div>

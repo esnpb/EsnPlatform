@@ -6,63 +6,33 @@ import ProgressBarDropdownItem from './ProgressBar';
 import SeeAllDropdownItem from './SeeAll';
 
 export default function DropdownItem(props) {
-  const item = props;
-  switch (item.type) {
+  switch (props.type) {
     case 'button': {
       return (
-        <ButtonDropdownItem
-          key={item.key}
-          title={item.title}
-          href={item.href}
-          icon={item.icon}
-        />
+        <ButtonDropdownItem {...props} />
       );
     }
     case 'message': {
       return (
-        <MessageDropdownItem
-          key={item.key}
-          title={item.title}
-          text={item.text}
-          href={item.href}
-          timestamp={item.timestamp}
-        />
+        <MessageDropdownItem {...props} />
       );
     }
     case 'notification': {
       return (
-        <NotificationDropdownItem
-          key={item.key}
-          title={item.title}
-          href={item.href}
-          icon={item.icon}
-          timestamp={item.timestamp}
-        />
+        <NotificationDropdownItem {...props} />
       );
     }
     case 'progressbar': {
-      if (!item.progress) {
+      if (!props.progress) {
         throwError('Progress nie istnieje w props');
       }
       return (
-        <ProgressBarDropdownItem
-          key={item.key}
-          title={item.title}
-          href={item.href}
-          value={item.progress.val}
-          minval={item.progress.minval}
-          maxval={item.progress.maxval}
-          type={item.progress.type}
-        />
+        <ProgressBarDropdownItem {...props} />
       );
     }
     case 'see-all': {
       return (
-        <SeeAllDropdownItem
-          key={item.key}
-          title={item.title}
-          href={item.href}
-        />
+        <SeeAllDropdownItem {...props} />
       );
     }
     case 'divider': {

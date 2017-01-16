@@ -9,6 +9,10 @@ export default function UserDropdown() {
     { key: 4, type: 'button', title: 'Logout', icon: 'fa-sign-out', href: 'login.html' },
   ];
   return (
-    <Dropdown dropButtonClass="fa-user" dropdownClass="dropdown-user" dropItems={dropItems} />
+    <Dropdown
+      dropButtonClass="fa-user"
+      dropdownClass="dropdown-user"
+      dropItems={dropItems}
+    />
   );
 }

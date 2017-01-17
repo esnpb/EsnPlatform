@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Navbar from './Navbar';
 
 @connect((store) => { // @ decorator działa jak [Attribute] w .NET
   const { members, erasmuses, countries } = store;
@@ -16,8 +15,16 @@ export default class Layout extends React.Component {
     // this.props.dispatch(fetchUser());
   }
   render() {
+    const pageWrapperStyle = {
+      minHeight: "405px",
+    };
     return (
-      <Navbar />
+      <div>
+        no elo, EmptyLayout
+        <div class="page-wrapper" style={pageWrapperStyle}>
+          {this.props.children}
+        </div>
+      </div>
     );
   }
 }

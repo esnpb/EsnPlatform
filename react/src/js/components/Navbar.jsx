@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Sidebar from './Sidebar';
 import NavbarDropdowns from './Navbar/NavbarDropdowns';
 
@@ -15,7 +16,7 @@ export default function Navbar() {
           <span class="icon-bar" />
           <span class="icon-bar" />
         </button>
-        <a class="navbar-brand" href="index.html">ESN Platform by Karol L. - SB Admin v2.0</a>
+        <Link to="tables"><a class="navbar-brand" href="index.html">ESN Platform by Karol L. - SB Admin v2.0</a></Link>
       </div>
       <NavbarDropdowns />
       <Sidebar />

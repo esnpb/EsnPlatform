@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function NotFoundContainer(props) {
+export default function NotFound() {
   return (
-    <div></div>
+    <div />
   );
 }
 
-NotFoundContainer.propTypes = {
+NotFound.propTypes = {
   // your propTypes here
   title: React.PropTypes.string.isRequired,
 };

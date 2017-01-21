@@ -1,5 +1,5 @@
 export default [
-  { key: 1, level: 0, href: 'index.html', icon: 'fa-dashboard', title: 'Dashboard' },
+  { key: 1, level: 0, href: '/', icon: 'fa-dashboard', title: 'Dashboard' },
   {
     key: 2,
     level: 0,
@@ -7,12 +7,12 @@ export default [
     title: 'Charts',
     icon: 'fa-bar-chart-o',
     items: [
-      { key: 3, level: 1, href: 'flot.html', title: 'Flot Charts' },
-      { key: 4, level: 1, href: 'morris.html', title: 'Morris.js Charts' },
+      { key: 3, level: 1, href: 'flot', title: 'Flot Charts' },
+      { key: 4, level: 1, href: 'morris', title: 'Morris.js Charts' },
     ],
   },
-  { key: 5, level: 0, href: 'tables.html', title: 'Tables', icon: 'fa-table' },
-  { key: 6, level: 0, href: 'forms.html', title: 'Forms', icon: 'fa-edit' },
+  { key: 5, level: 0, href: 'tables', title: 'Tables', icon: 'fa-table' },
+  { key: 6, level: 0, href: 'forms', title: 'Forms', icon: 'fa-edit' },
   {
     key: 7,
     level: 0,
@@ -20,12 +20,12 @@ export default [
     title: 'UI Elements',
     icon: 'fa-wrench',
     items: [
-      { key: 8, level: 1, href: 'panels-wells.html', title: 'Panels and Wells' },
-      { key: 9, level: 1, href: 'buttons.html', title: 'Buttons' },
-      { key: 10, level: 1, href: 'notifications.html', title: 'Notifications' },
-      { key: 11, level: 1, href: 'typography.html', title: 'Typography' },
-      { key: 12, level: 1, href: 'icons.html', title: 'Icons' },
-      { key: 13, level: 1, href: 'grid.html', title: 'Grid' },
+      { key: 8, level: 1, href: 'panels-wells', title: 'Panels and Wells' },
+      { key: 9, level: 1, href: 'buttons', title: 'Buttons' },
+      { key: 10, level: 1, href: 'notifications', title: 'Notifications' },
+      { key: 11, level: 1, href: 'typography', title: 'Typography' },
+      { key: 12, level: 1, href: 'icons', title: 'Icons' },
+      { key: 13, level: 1, href: 'grid', title: 'Grid' },
     ],
   },
   {
@@ -58,8 +58,8 @@ export default [
     title: 'Sample Pages',
     icon: 'fa-files-o',
     items: [
-      { key: 23, level: 1, href: 'blank.html', title: 'Blank page' },
-      { key: 24, level: 1, href: 'login.html', title: 'Login page' },
+      { key: 23, level: 1, href: 'blank', title: 'Blank page' },
+      { key: 24, level: 1, href: 'login', title: 'Login page' },
     ],
   },
 ];

@@ -21,7 +21,7 @@ export default class Layout extends React.Component {
     return (
       <div>
         no elo, EmptyLayout
-        <div class="page-wrapper" style={pageWrapperStyle}>
+        <div id="page-wrapper" style={pageWrapperStyle}>
           {this.props.children}
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function ChartsContainer(props) {
+export default function Charts() {
   return (
-    <div></div>
+    <div />
   );
 }
 
-ChartsContainer.propTypes = {
+Charts.propTypes = {
   // your propTypes here
   title: React.PropTypes.string.isRequired,
 };

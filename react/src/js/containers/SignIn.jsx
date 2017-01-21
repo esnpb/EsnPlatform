@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function SignInContainer(props) {
+export default function SignIn(props) {
   return (
     <div></div>
   );
 }
 
-SignInContainer.propTypes = {
+SignIn.propTypes = {
   // your propTypes here
   title: React.PropTypes.string.isRequired,
 };

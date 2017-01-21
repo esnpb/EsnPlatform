@@ -38,7 +38,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "dev": "webpack-dev-server --content-base src --inline --hot --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Karol L. 2017",

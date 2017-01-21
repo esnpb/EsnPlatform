@@ -19,7 +19,7 @@ export default function NotificationDropdownItem(props) {
 }
 
 NotificationDropdownItem.propTypes = {
-  timestamp: React.PropTypes.string.isRequired,
+  timestamp: React.PropTypes.number.isRequired,
   icon: React.PropTypes.string,
   title: React.PropTypes.string.isRequired,
   href: React.PropTypes.string.isRequired,

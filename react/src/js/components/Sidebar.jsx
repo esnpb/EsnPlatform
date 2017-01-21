@@ -4,10 +4,9 @@ import SidebarSearchItem from './Sidebar/SidebarSearchItem';
 import MenuItemTree from './Sidebar/MenuItemTree';
 
 export default function Sidebar() {
-  const itemsTree = MenuItemTree;
   const sidebarItemTree =
-    itemsTree && itemsTree.length > 0 ?
-      itemsTree.map(item => <SidebarItem {...item} />) :
+    MenuItemTree && MenuItemTree.length > 0 ?
+      MenuItemTree.map(item => <SidebarItem {...item} />) :
       [];
   return (
     <div class="navbar-default sidebar" role="navigation">

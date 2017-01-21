@@ -16,7 +16,7 @@ export default function Navbar() {
           <span class="icon-bar" />
           <span class="icon-bar" />
         </button>
-        <Link to="tables"><a class="navbar-brand" href="index.html">ESN Platform by Karol L. - SB Admin v2.0</a></Link>
+        <Link to="/" class="navbar-brand">ESN Platform by Karol L. - SB Admin v2.0</Link>
       </div>
       <NavbarDropdowns />
       <Sidebar />

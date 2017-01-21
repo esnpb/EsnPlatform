@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TablesContainer(props) {
+export default function Tables() {
   return (
     <div>
       <h1>
@@ -10,7 +10,7 @@ export default function TablesContainer(props) {
   );
 }
 
-TablesContainer.propTypes = {
+Tables.propTypes = {
   // your propTypes here
   title: React.PropTypes.string.isRequired,
 };

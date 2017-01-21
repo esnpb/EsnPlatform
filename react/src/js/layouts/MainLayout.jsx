@@ -12,17 +12,22 @@ import Navbar from '../components/Navbar';
   };
 })
 export default class Layout extends React.Component {
-  componentWillMount() {
-    // this.props.dispatch(fetchUser());
-  }
+  propTypes = {
+    children: React.PropTypes.node,
+  };
+
+  defaultProps = {
+    children: null,
+  };
+
   render() {
     const pageWrapperStyle = {
-      minHeight: "405px",
+      minHeight: '405px',
     };
     return (
       <div>
         <Navbar />
-        <div class="page-wrapper" style={pageWrapperStyle}>
+        <div id="page-wrapper" style={pageWrapperStyle}>
           {this.props.children}
         </div>
       </div>

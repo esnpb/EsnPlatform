@@ -1,0 +1,2 @@
+db.Users.insert({ firstName: 'Karol', lastName: 'Laskowski', login: 'karoll86', password: '', salt: 'dfar34ir', lastTimeLogged: '01-01-2017 12:00' });
+db.Users.insert({ firstName: 'admin', lastName: '', login: 'admin', password: '', salt: 'kdc74nds', lastTimeLogged: '01-01-2017 12:00' });

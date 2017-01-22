@@ -10,21 +10,19 @@ import { connect } from 'react-redux';
     errors: null,
   };
 })
-export default class Layout extends React.Component {
+export default class EmptyLayout extends React.Component {
   componentWillMount() {
     // this.props.dispatch(fetchUser());
   }
   render() {
-    const pageWrapperStyle = {
-      minHeight: "405px",
-    };
     return (
-      <div>
-        no elo, EmptyLayout
-        <div id="page-wrapper" style={pageWrapperStyle}>
-          {this.props.children}
-        </div>
+      <div id="container">
+        {this.props.children}
       </div>
     );
   }
 }
+
+EmptyLayout.propTypes = {
+  children: React.PropTypes.node.isRequired,
+};

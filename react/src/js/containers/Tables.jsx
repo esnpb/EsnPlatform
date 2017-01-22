@@ -3,9 +3,14 @@ import React from 'react';
 export default function Tables() {
   return (
     <div>
-      <h1>
-        no elo, tables
-      </h1>
+      tables page!!
+      <Panel type="green">
+        <PanelHeader title="third panel example" />
+        <PanelBody>
+          <Table />
+        </PanelBody>
+        <ButtonPanelFooter title="no elo kliknij" href="/" />
+      </Panel>
     </div>
   );
 }

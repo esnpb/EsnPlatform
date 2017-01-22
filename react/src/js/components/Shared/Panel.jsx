@@ -10,7 +10,7 @@ const panelTypes = ['default', 'primary', 'green', 'red', 'yellow'];
 
 export default function Panel(props) {
   const type = panelTypes.indexOf(props.type) >= 0 ? props.type : 'default';
-  const panelClass = `panel panel-${type}`;
+  const panelClass = `panel panel-${type} ${props.panelClass}`;
   return (
     <div class={panelClass}>
       {props.children}

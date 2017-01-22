@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar';
     errors: null,
   };
 })
-export default class Layout extends React.Component {
+export default class MainLayout extends React.Component {
   propTypes = {
     children: React.PropTypes.node,
   };

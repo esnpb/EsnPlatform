@@ -2,23 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../components/Navbar';
 
-@connect((store) => { // @ decorator działa jak [Attribute] w .NET
-  const { members, erasmuses, countries } = store;
+import { getLanguages } from '../actions/languageActions';
+
+const mapStateToProps = (store) => {
+  const { members, erasmuses, languages } = store;
   return { // ten obiekt będzie == this.props wewnatrz Layouta poniżej
     members,
     erasmuses,
-    countries,
+    languages,
     errors: null,
   };
-})
+};
+
+@connect(mapStateToProps) // @ decorator działa troche jak higher order component
 export default class MainLayout extends React.Component {
   propTypes = {
     children: React.PropTypes.node,
+    dispatch: React.PropTypes.func,
   };
 
   defaultProps = {
     children: null,
+    dispatch: null,
   };
+
+  componentWillMount() {
+    this.props.dispatch(getLanguages(1));
+  }
 
   render() {
     const pageWrapperStyle = {

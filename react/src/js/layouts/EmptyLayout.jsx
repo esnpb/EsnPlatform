@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 @connect((store) => { // @ decorator działa jak [Attribute] w .NET
-  const { members, erasmuses, countries } = store;
+  const { members, erasmuses, languages } = store;
   return { // ten obiekt będzie == this.props wewnatrz Layouta poniżej
     members,
     erasmuses,
-    countries,
+    languages,
     errors: null,
   };
 })
@@ -16,7 +16,7 @@ export default class EmptyLayout extends React.Component {
   }
   render() {
     return (
-      <div id="container">
+      <div class="container">
         {this.props.children}
       </div>
     );

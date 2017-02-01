@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { Panel, PanelHeader, PanelBody } from '../components/Shared/Panel';
 
 export default function Login(props) {
@@ -12,15 +12,15 @@ export default function Login(props) {
         <form role="form">
           <fieldset>
             <div class="form-group">
-              <input class="form-control" placeholder="E-mail" name={props.loginName} type={props.loginType} autoFocus="" />
+              <input class="form-control" placeholder={props.loginPlaceholder} name={props.loginName} type={props.loginType} autoFocus="" />
             </div>
             <div class="form-group">
               <input class="form-control" placeholder={props.passPlaceholder} name={props.passName} type="password" value="" />
             </div>
             {props.allowRemember ?
               <div class="checkbox">
-                <label>
-                  <input name="remember" type="checkbox" value={props.rememberLabel} />{props.rememberLabel}
+                <label htmlFor="remember">
+                  <input id="remember" name="remember" type="checkbox" value={props.rememberLabel} />{props.rememberLabel}
                 </label>
               </div> : null}
             <a href={props.target} class="btn btn-lg btn-success btn-block">{props.loginButtonTitle}</a>

@@ -21,11 +21,13 @@ export default function Panel(props) {
 Panel.propTypes = {
   type: React.PropTypes.oneOf(['default', 'primary', 'green', 'red', 'yellow']),
   children: React.PropTypes.node,
+  panelClass: React.PropTypes.string,
 };
 
 Panel.defaultProps = {
   type: 'default',
   children: null,
+  panelClass: '',
 };
 
 export {

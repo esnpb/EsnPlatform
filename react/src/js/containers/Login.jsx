@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from '../components/Login';
 
-export default function LoginContainer(props) {
+export default function LoginContainer() {
   return (
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
@@ -14,7 +14,8 @@ export default function LoginContainer(props) {
           allowRemember="true"
           rememberLabel="Remember me"
           loginButtonTitle="Login"
-          target="/" />
+          target="/"
+        />
       </div>
     </div>
   );
@@ -22,5 +23,5 @@ export default function LoginContainer(props) {
 
 LoginContainer.propTypes = {
   // your propTypes here
-  //title: React.PropTypes.string.isRequired,
+  // title: React.PropTypes.string.isRequired,
 };

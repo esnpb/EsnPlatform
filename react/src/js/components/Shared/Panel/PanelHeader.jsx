@@ -2,14 +2,18 @@ import React from 'react';
 import MiniDropdownMenu from '../MiniDropdownMenu';
 
 export default function PanelHeader(props) {
-  const iconClass = `fa ${props.icon.startsWith('fa-') ? props.icon : `fa-${props.icon.length > 0 ? props.icon : ''}`} fa-fw`;
+  const isIconDefined = props.icon && props.icon.length > 0;
+  let iconClass = '';
+  if (isIconDefined) {
+    iconClass = `fa ${props.icon.startsWith('fa-') ? props.icon : ''} fa-fw`;
+  }
   const menuButton = props.menuItems && props.menuItems.length > 0 ?
     <MiniDropdownMenu items={props.menuItems} title={props.menuTitle} /> :
     null;
 
   return (
     <div class="panel-heading">
-      <i class={iconClass} />
+      {isIconDefined ? <i class={iconClass} /> : null}
       {props.title}
       {props.children}
       {menuButton}

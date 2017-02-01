@@ -1,4 +1,5 @@
 import React from 'react';
+import { Panel, PanelHeader, PanelBody, ButtonPanelFooter } from '../components/Shared/Panel';
 
 export default function Tables() {
   return (
@@ -7,7 +8,7 @@ export default function Tables() {
       <Panel type="green">
         <PanelHeader title="third panel example" />
         <PanelBody>
-          <Table />
+          elo
         </PanelBody>
         <ButtonPanelFooter title="no elo kliknij" href="/" />
       </Panel>

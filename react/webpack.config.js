@@ -5,7 +5,10 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/app.js",
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  entry: "./js/app.jsx",
   module: {
     preLoaders: [
       {
@@ -16,11 +19,11 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /(node_modules|bower_components)/,
         loader: ['babel-loader'],
         query: {
-          presets: ['react', 'es2015', 'stage-0'],
+          presets: ['react', 'es2015', 'stage-0', 'airbnb'],
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
         }
       }

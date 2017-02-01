@@ -3,10 +3,11 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  let newState = null;
   switch (action.type) {
     case 'ADD_ERASMUS': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           erasmuses: [...state.erasmuses.concat(action.payload)],
         };
@@ -18,7 +19,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'REMOVE_ERASMUS': {
       if (action.payload.id == null) {
-        state = {
+        newState = {
           ...state,
           erasmuses: [...state.erasmuses.filter(obj => action.payload.id !== obj.id)],
         };
@@ -29,7 +30,7 @@ export default function reducer(state = initialState, action) {
     }
     case 'UPDATE_ERASMUS': {
       if (action.payload.id > 0) {
-        state = {
+        newState = {
           ...state,
           erasmuses: state.erasmuses.map((obj) => {
             if (obj.id !== action.payload.id) {
@@ -47,7 +48,7 @@ export default function reducer(state = initialState, action) {
       break;
     }
     case 'FETCH_ERASMUS_FULFILLED': {
-      state = { ...state, user: action.payload };
+      newState = { ...state, user: action.payload };
       break;
     }
     case 'FETCH_ERASMUS_ERROR': {
@@ -57,5 +58,5 @@ export default function reducer(state = initialState, action) {
       break;
     }
   }
-  return state;
+  return newState;
 }

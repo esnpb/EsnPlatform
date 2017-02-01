@@ -1,0 +1,65 @@
+export default [
+  { key: 1, level: 0, href: '/', icon: 'fa-dashboard', title: 'Dashboard' },
+  {
+    key: 2,
+    level: 0,
+    href: '#',
+    title: 'Charts',
+    icon: 'fa-bar-chart-o',
+    items: [
+      { key: 3, level: 1, href: 'flot', title: 'Flot Charts' },
+      { key: 4, level: 1, href: 'morris', title: 'Morris.js Charts' },
+    ],
+  },
+  { key: 5, level: 0, href: 'tables', title: 'Tables', icon: 'fa-table' },
+  { key: 6, level: 0, href: 'forms', title: 'Forms', icon: 'fa-edit' },
+  {
+    key: 7,
+    level: 0,
+    href: '#',
+    title: 'UI Elements',
+    icon: 'fa-wrench',
+    items: [
+      { key: 8, level: 1, href: 'panels-wells', title: 'Panels and Wells' },
+      { key: 9, level: 1, href: 'buttons', title: 'Buttons' },
+      { key: 10, level: 1, href: 'notifications', title: 'Notifications' },
+      { key: 11, level: 1, href: 'typography', title: 'Typography' },
+      { key: 12, level: 1, href: 'icons', title: 'Icons' },
+      { key: 13, level: 1, href: 'grid', title: 'Grid' },
+    ],
+  },
+  {
+    key: 14,
+    level: 0,
+    href: '#',
+    title: 'Multi-Level Dropdown',
+    icon: 'fa-sitemap',
+    items: [
+      { key: 15, level: 1, href: '#', title: 'Second Level Item' },
+      { key: 16, level: 1, href: '#', title: 'Second Level Item' },
+      {
+        key: 17,
+        level: 1,
+        href: '#',
+        title: 'Second Level Item',
+        items: [
+          { key: 18, level: 2, href: '#', title: 'Third Level Item' },
+          { key: 19, level: 2, href: '#', title: 'Third Level Item' },
+          { key: 20, level: 2, href: '#', title: 'Third Level Item' },
+          { key: 21, level: 2, href: '#', title: 'Third Level Item' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 22,
+    level: 0,
+    href: '#',
+    title: 'Sample Pages',
+    icon: 'fa-files-o',
+    items: [
+      { key: 23, level: 1, href: 'blank', title: 'Blank page' },
+      { key: 24, level: 1, href: 'login', title: 'Login page' },
+    ],
+  },
+];

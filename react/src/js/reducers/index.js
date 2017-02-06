@@ -6,6 +6,7 @@ import languages from './languageReducer';
 import menuItems from './menuItemReducer';
 import users from './userReducer';
 import notifications from './notificationReducer';
+import persons from './personReducer';
 import errors from './errorReducer';
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   menuItems,
   notifications,
   users,
+  persons,
   errors,
 });

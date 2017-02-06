@@ -7,23 +7,12 @@ import { getNotifications } from '../actions/notificationActions';
 
 const mapStateToProps = (store) => {
   const {
-    members,
-    erasmuses,
-    languages,
     menuItems,
-    menuItemRenditions,
     notifications,
-    users,
   } = store;
   return { // ten obiekt będzie == this.props wewnatrz Layouta poniżej
-    members,
-    erasmuses,
-    languages,
     menuItems,
-    menuItemRenditions,
     notifications,
-    users,
-    errors: null,
     settings: {
       language: 'gb',
     },
@@ -38,7 +27,6 @@ export default class MainLayout extends React.Component {
     dispatch: React.PropTypes.func,
     menuItems: React.PropTypes.arrayOf(React.PropTypes.object),
     notifications: React.PropTypes.arrayOf(React.PropTypes.object),
-    // users: React.PropTypes.arrayOf(React.PropTypes.object),
     settings: React.PropTypes.shape({
       language: React.PropTypes.string,
     }),
@@ -50,7 +38,6 @@ export default class MainLayout extends React.Component {
     dispatch: null,
     menuItems: null,
     notifications: null,
-    // users: null,
     settings: {
       language: 'gb',
     },

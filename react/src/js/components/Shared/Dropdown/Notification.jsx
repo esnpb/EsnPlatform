@@ -8,7 +8,9 @@ export default function NotificationDropdownItem(props) {
       <a href={props.href}>
         <div>
           <i class={iconClass} />
-          {props.title}
+          { props.titles[props.language] != null ?
+            props.titles[props.language] :
+            props.titles.gb }
           <span class="pull-right text-muted small">
             {timeago(new Date(props.timestamp))}
           </span>
@@ -19,12 +21,23 @@ export default function NotificationDropdownItem(props) {
 }
 
 NotificationDropdownItem.propTypes = {
-  timestamp: React.PropTypes.number.isRequired,
+  timestamp: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
-  title: React.PropTypes.string.isRequired,
+  // priority: React.PropTypes.number,
   href: React.PropTypes.string.isRequired,
+  language: React.PropTypes.string,
+  titles: React.PropTypes.shape({
+    gb: React.PropTypes.string.isRequired,
+    pl: React.PropTypes.string,
+  }),
 };
 
 NotificationDropdownItem.defaultProps = {
   icon: '',
+  // priority: 0,
+  language: 'gb',
+  titles: {
+    gb: '',
+    pl: '',
+  },
 };

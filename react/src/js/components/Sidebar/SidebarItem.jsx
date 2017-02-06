@@ -1,34 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
-
-function intToOrdinalText(number) {
-  switch (number) {
-    case 0:
-      return 'zero';
-    case 1:
-      return 'first';
-    case 2:
-      return 'second';
-    case 3:
-      return 'third';
-    case 4:
-      return 'fourth';
-    default:
-      break;
-  }
-  return '';
-}
+import intToOrdinalText from '../../helpers/math';
 
 export default function SidebarItem(props) {
   const children = props.items && props.items.length > 0 ? props.items.map(obj =>
-    <SidebarItem {...obj} />) : [];
+    <SidebarItem {...obj} language={props.language} />) : [];
   const iconClass = `fa fa-fw ${props.icon}`;
   const levelClass = `nav nav-${intToOrdinalText(props.level + 2)}-level`;
   return (
     <li>
-      <Link href={props.href} activeClassName="active">
+      <Link href={props.targetUrl} activeClassName="active">
         { props.icon ? <i class={iconClass} /> : '' }
-        {props.title}
+        { props.titles[props.language] != null ? props.titles[props.language] : props.titles.gb }
         { props.items && props.items.length > 0 ? <span class="fa arrow" /> : '' }
       </Link>
       { props.items && props.items.length > 0 ?
@@ -44,12 +27,21 @@ SidebarItem.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.object),
   icon: React.PropTypes.string,
   level: React.PropTypes.number,
-  title: React.PropTypes.string.isRequired,
-  href: React.PropTypes.string.isRequired,
+  titles: React.PropTypes.shape({
+    gb: React.PropTypes.string.isRequired,
+    pl: React.PropTypes.string,
+  }),
+  language: React.PropTypes.string,
+  targetUrl: React.PropTypes.string.isRequired,
 };
 
 SidebarItem.defaultProps = {
   items: null,
   icon: '',
   level: 0,
+  language: 'gb',
+  titles: {
+    gb: '',
+    pl: '',
+  },
 };

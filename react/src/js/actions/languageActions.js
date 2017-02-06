@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as types from '../constants/ActionTypes';
 import * as status from '../constants/RequestStatuses';
 
-const apiResourcePath = '/api/languages';
+const apiResourcePath = 'http://localhost:3000/api/languages';
 
 // action sub-creators, only to be used by asynchronous action creators
 const getLanguagesRequest =
@@ -39,7 +39,7 @@ export function getLanguages(criteria) {
     dispatch(getLanguagesRequest(criteria));
     return axios.get(apiResourcePath, criteria)
       .then((response) => {
-        dispatch(getLanguagesDone(response));
+        dispatch(getLanguagesDone(response.data));
       })
       .catch((error) => {
         dispatch(getLanguagesError(error));
@@ -52,7 +52,7 @@ export function addLanguage(language) {
     dispatch(addLanguageRequest(language));
     return axios.post(apiResourcePath, language)
       .then((response) => {
-        dispatch(addLanguageDone(response));
+        dispatch(addLanguageDone(response.data));
       })
       .catch((error) => {
         dispatch(addLanguageError(error));
@@ -65,7 +65,7 @@ export function editLanguage(language) {
     dispatch(editLanguageRequest(language));
     return axios.put(apiResourcePath, language)
       .then((response) => {
-        dispatch(editLanguageDone(response));
+        dispatch(editLanguageDone(response.data));
       })
       .catch((error) => {
         dispatch(editLanguageError(error));
@@ -78,7 +78,7 @@ export function removeLanguage(id) {
     dispatch(removeLanguageRequest(id));
     return axios.delete(apiResourcePath, id)
       .then((response) => {
-        dispatch(removeLanguageDone(response));
+        dispatch(removeLanguageDone(response.data));
       })
       .catch((error) => {
         dispatch(removeLanguageError(error));

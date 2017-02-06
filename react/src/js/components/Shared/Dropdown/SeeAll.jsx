@@ -4,7 +4,11 @@ export default function SeeAllDropdownItem(props) {
   return (
     <li>
       <a class="text-center" href={props.href}>
-        <strong>{props.title}</strong>
+        <strong>
+          { props.titles[props.language] != null ?
+            props.titles[props.language] :
+            props.titles.gb }
+        </strong>
         <i class="fa fa-angle-right" />
       </a>
     </li>
@@ -12,6 +16,19 @@ export default function SeeAllDropdownItem(props) {
 }
 
 SeeAllDropdownItem.propTypes = {
-  title: React.PropTypes.string.isRequired,
+  titles: React.PropTypes.shape({
+    gb: React.PropTypes.string.isRequired,
+    pl: React.PropTypes.string,
+  }),
+  language: React.PropTypes.string,
   href: React.PropTypes.string.isRequired,
+};
+
+SeeAllDropdownItem.defaultProps = {
+  language: 'gb',
+  titles: {
+    gb: '',
+    pl: '',
+  },
+  href: '',
 };

@@ -1,5 +1,5 @@
 import * as reqStatus from '../constants/RequestStatuses';
-import { GET_LANGUAGES, ADD_LANGUAGE, EDIT_LANGUAGE, REMOVE_LANGUAGE } from '../constants/ActionTypes';
+import { GET_MENUITEMS, ADD_MENUITEM, EDIT_MENUITEM, REMOVE_MENUITEM } from '../constants/ActionTypes';
 import { omit, normalizePayload } from '../helpers/objectManipulation';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   allIds: [],
 };
 
-const getLanguageReducer = (state, action) => {
+const getMenuItemReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
       // nothing ?
@@ -18,6 +18,8 @@ const getLanguageReducer = (state, action) => {
         return {
           byId: normalizePayload(action.payload),
           allIds: [...action.payload.map(x => x._id)],
+          fetching: false,
+          fetched: true,
         };
       }
       break;
@@ -32,7 +34,7 @@ const getLanguageReducer = (state, action) => {
   return state;
 };
 
-const addLanguageReducer = (state, action) => {
+const addMenuItemReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
       // nothing ?
@@ -57,7 +59,7 @@ const addLanguageReducer = (state, action) => {
   return state;
 };
 
-const editLanguageReducer = (state, action) => {
+const editMenuItemReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
       // nothing ?
@@ -71,7 +73,7 @@ const editLanguageReducer = (state, action) => {
             [action.payload.id]: {
               ...action.payload,
               // TODO: if you are going to use nested arrays of ids of related objects - uncomment
-              // memberLanguages: [...action.payload.memberLanguages]
+              // memberMenuItems: [...action.payload.memberMenuItems]
             },
           },
           allIds: [...state.allIds],
@@ -89,7 +91,7 @@ const editLanguageReducer = (state, action) => {
   return state;
 };
 
-const removeLanguageReducer = (state, action) => {
+const removeMenuItemReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
       // nothing ?
@@ -116,17 +118,17 @@ const removeLanguageReducer = (state, action) => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_LANGUAGES: {
-      return getLanguageReducer(state, action);
+    case GET_MENUITEMS: {
+      return getMenuItemReducer(state, action);
     }
-    case ADD_LANGUAGE: {
-      return addLanguageReducer(state, action);
+    case ADD_MENUITEM: {
+      return addMenuItemReducer(state, action);
     }
-    case REMOVE_LANGUAGE: {
-      return removeLanguageReducer(state, action);
+    case REMOVE_MENUITEM: {
+      return removeMenuItemReducer(state, action);
     }
-    case EDIT_LANGUAGE: {
-      return editLanguageReducer(state, action);
+    case EDIT_MENUITEM: {
+      return editMenuItemReducer(state, action);
     }
     default: {
       break;

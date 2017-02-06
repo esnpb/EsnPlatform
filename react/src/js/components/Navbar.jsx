@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Sidebar from './Sidebar';
-import NavbarDropdowns from './Navbar/NavbarDropdowns';
 
-export default function Navbar() {
+import UserDropdown from './Navbar/UserDropdown';
+import AlertDropdown from './Navbar/AlertDropdown';
+import TaskDropdown from './Navbar/TaskDropdown';
+import MessageDropdown from './Navbar/MessageDropdown';
+
+export default function Navbar(props) {
   const navStyle = {
     marginBottom: 0,
   };
@@ -18,8 +22,25 @@ export default function Navbar() {
         </button>
         <Link to="/" class="navbar-brand">ESN Platform by Karol L. - SB Admin v2.0</Link>
       </div>
-      <NavbarDropdowns />
-      <Sidebar />
+      <ul class="nav navbar-top-links navbar-right">
+        <MessageDropdown />
+        <TaskDropdown />
+        <AlertDropdown alerts={props.alerts} language={props.language} />
+        <UserDropdown />
+      </ul>
+      <Sidebar menuItemsTree={props.menuItemsTree} language={props.language} />
     </nav>
   );
 }
+
+Navbar.propTypes = {
+  menuItemsTree: React.PropTypes.arrayOf(React.PropTypes.object),
+  language: React.PropTypes.string,
+  alerts: React.PropTypes.arrayOf(React.PropTypes.object),
+};
+
+Navbar.defaultProps = {
+  menuItemsTree: [],
+  alerts: [],
+  language: 'gb',
+};

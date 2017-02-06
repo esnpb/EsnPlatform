@@ -3,7 +3,7 @@ import DropdownItem from './Dropdown/DropdownItem';
 
 export default function Dropdown(props) {
   const itemsList = props.dropItems.map(item =>
-    <DropdownItem {...item} />);
+    <DropdownItem {...item} language={props.language} />);
   const buttonIconClass = `fa ${props.dropButtonClass} fa-fw`;
   const dropdownIconClass = `dropdown-menu ${props.dropdownClass}`;
   return (
@@ -23,10 +23,12 @@ Dropdown.propTypes = {
   dropItems: React.PropTypes.arrayOf(React.PropTypes.object),
   dropButtonClass: React.PropTypes.string,
   dropdownClass: React.PropTypes.string,
+  language: React.PropTypes.string,
 };
 
 Dropdown.defaultProps = {
   dropItems: null,
   dropButtonClass: '',
   dropdownClass: '',
+  language: 'gb',
 };

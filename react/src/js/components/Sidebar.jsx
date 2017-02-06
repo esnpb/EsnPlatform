@@ -1,12 +1,11 @@
 import React from 'react';
 import SidebarItem from './Sidebar/SidebarItem';
 import SidebarSearchItem from './Sidebar/SidebarSearchItem';
-import MenuItemTree from './Sidebar/MenuItemTree';
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const sidebarItemTree =
-    MenuItemTree && MenuItemTree.length > 0 ?
-      MenuItemTree.map(item => <SidebarItem {...item} />) :
+    props.menuItemsTree && props.menuItemsTree.length > 0 ?
+      props.menuItemsTree.map(item => <SidebarItem {...item} language={props.language} />) :
       [];
   return (
     <div class="navbar-default sidebar" role="navigation">
@@ -19,3 +18,13 @@ export default function Sidebar() {
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  menuItemsTree: React.PropTypes.arrayOf(React.PropTypes.object),
+  language: React.PropTypes.string,
+};
+
+Sidebar.defaultProps = {
+  menuItemsTree: {},
+  language: 'gb',
+};

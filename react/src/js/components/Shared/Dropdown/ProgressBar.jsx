@@ -13,7 +13,11 @@ export default function ProgressBarDropdownItem(props) {
       <a href={props.href}>
         <div>
           <p>
-            <strong>{props.title}</strong>
+            <strong>
+              { props.titles[props.language] != null ?
+                props.titles[props.language] :
+                props.titles.gb }
+            </strong>
             <span class="pull-right text-muted">
               {percentCompleteTitle}
             </span>
@@ -45,6 +49,18 @@ ProgressBarDropdownItem.propTypes = {
     maxval: React.PropTypes.number.isRequired,
     minval: React.PropTypes.number.isRequired,
   }).isRequired,
-  title: React.PropTypes.string.isRequired,
+  titles: React.PropTypes.shape({
+    gb: React.PropTypes.string.isRequired,
+    pl: React.PropTypes.string,
+  }),
+  language: React.PropTypes.string,
   href: React.PropTypes.string.isRequired,
+};
+
+ProgressBarDropdownItem.defaultProps = {
+  language: 'gb',
+  titles: {
+    gb: '',
+    pl: '',
+  },
 };

@@ -8,7 +8,9 @@
     /*override airbnb rule*/
     'linebreak-style': ['error', 'windows'],
     'jsx-quotes': ['error', 'prefer-double'],
-    'react/no-unknown-property': [2, { 'ignore': ['class', 'for'] }],
+    'react/no-unknown-property': ['error', { 'ignore': ['class', 'for'] }],
+    'no-underscore-dangle': ['error', { 'allow': ['_id'] }],
+    'no-plusplus': ['error', { "allowForLoopAfterthoughts": true }],
   },
   'globals': {
     'window': true,

@@ -17,3 +17,8 @@ export const GET_USERS = 'GET_USERS';
 export const ADD_USER = 'ADD_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 export const EDIT_USER = 'EDIT_USER';
+
+export const GET_USERSETTINGS = 'GET_USERSETTINGS';
+export const ADD_USERSETTING = 'ADD_USERSETTING';
+export const REMOVE_USERSETTING = 'REMOVE_USERSETTING';
+export const EDIT_USERSETTING = 'EDIT_USERSETTING';

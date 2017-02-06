@@ -226,3 +226,14 @@ db.MenuItems.insert([{
 		"pl": 'Logowanie',
 	}
 }]);
+db.MenuItems.insert([{
+	"parentId": null,
+	"targetUrl": "/users",
+	"level": "0",
+	"icon": "fa-user",
+	"wage": NumberInt(1),
+	"titles": {
+		"gb": 'Users list',
+		"pl": 'Użytkownicy',
+	}
+}]);

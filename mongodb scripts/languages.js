@@ -7,8 +7,8 @@ db.Languages.insert({
 	"shortName": "pl",
 	"flagFile": "img/flag/pl.png",
 	"culture": "pl-PL",
-	"wage": 1,
-	"isActive": 1
+	"wage": NumberInt(1),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "English",
@@ -18,8 +18,8 @@ db.Languages.insert({
 	"shortName": "gb",
 	"flagFile": "img/flag/gb.png",
 	"culture": "en-GB",
-	"wage": 2,
-	"isActive": 1
+	"wage": NumberInt(2),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Portugues",
@@ -29,8 +29,8 @@ db.Languages.insert({
 	"shortName": "pt",
 	"flagFile": "img/flag/pt.png",
 	"culture": "pt-PT",
-	"wage": 3,
-	"isActive": 1
+	"wage": NumberInt(3),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Espanol",
@@ -40,8 +40,8 @@ db.Languages.insert({
 	"shortName": "es",
 	"flagFile": "img/flag/es.png",
 	"culture": "es-ES",
-	"wage": 4,
-	"isActive": 1
+	"wage": NumberInt(4),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Türk",
@@ -51,8 +51,8 @@ db.Languages.insert({
 	"shortName": "tr",
 	"flagFile": "img/flag/tr.png",
 	"culture": "tr-TR",
-	"wage": 5,
-	"isActive": 1
+	"wage": NumberInt(5),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Lietuvos",
@@ -62,8 +62,8 @@ db.Languages.insert({
 	"shortName": "lt",
 	"flagFile": "img/flag/lt.png",
 	"culture": "lt-LT",
-	"wage": 6,
-	"isActive": 1
+	"wage": NumberInt(6),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Français",
@@ -73,8 +73,8 @@ db.Languages.insert({
 	"shortName": "fr",
 	"flagFile": "img/flag/fr.png",
 	"culture": "fr-FR",
-	"wage": 7,
-	"isActive": 1
+	"wage": NumberInt(7),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Ελληνικά",
@@ -84,8 +84,8 @@ db.Languages.insert({
 	"shortName": "el",
 	"flagFile": "img/flag/el.png",
 	"culture": "el-GR",
-	"wage": 8,
-	"isActive": 1
+	"wage": NumberInt(8),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Italiano",
@@ -95,8 +95,8 @@ db.Languages.insert({
 	"shortName": "it",
 	"flagFile": "img/flag/it.png",
 	"culture": "it-IT",
-	"wage": 9,
-	"isActive": 1
+	"wage": NumberInt(9),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "România",
@@ -106,8 +106,8 @@ db.Languages.insert({
 	"shortName": "ro",
 	"flagFile": "img/flag/ro.png",
 	"culture": "ro-RO",
-	"wage": 10,
-	"isActive": 1
+	"wage": NumberInt(10),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Pусский",
@@ -117,8 +117,8 @@ db.Languages.insert({
 	"shortName": "ru",
 	"flagFile": "img/flag/ru.png",
 	"culture": "ru-RU",
-	"wage": 11,
-	"isActive": 1
+	"wage": NumberInt(11),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Deutsche",
@@ -128,8 +128,8 @@ db.Languages.insert({
 	"shortName": "ge",
 	"flagFile": "img/flag/ge.png",
 	"culture": "de-DE",
-	"wage": 12,
-	"isActive": 1
+	"wage": NumberInt(12),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Català",
@@ -139,8 +139,8 @@ db.Languages.insert({
 	"shortName": "ca",
 	"flagFile": "img/flag/ca.png",
 	"culture": "ca-ES",
-	"wage": 13,
-	"isActive": 1
+	"wage": NumberInt(13),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Dansk",
@@ -150,8 +150,8 @@ db.Languages.insert({
 	"shortName": "da",
 	"flagFile": "img/flag/da.png",
 	"culture": "da-DK",
-	"wage": 14,
-	"isActive": 1
+	"wage": NumberInt(14),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Беларускія",
@@ -161,8 +161,8 @@ db.Languages.insert({
 	"shortName": "be",
 	"flagFile": "img/flag/be.png",
 	"culture": "be-BY",
-	"wage": 15,
-	"isActive": 1
+	"wage": NumberInt(15),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Deutsch (Austria)",
@@ -172,8 +172,8 @@ db.Languages.insert({
 	"shortName": "at",
 	"flagFile": "img/flag/at.png",
 	"culture": "de-AT",
-	"wage": 16,
-	"isActive": 1
+	"wage": NumberInt(16),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Kазахский",
@@ -183,8 +183,8 @@ db.Languages.insert({
 	"shortName": "kk",
 	"flagFile": "img/flag/kk.png",
 	"culture": "kk-KZ",
-	"wage": 17,
-	"isActive": 1
+	"wage": NumberInt(17),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Slovenský",
@@ -194,8 +194,8 @@ db.Languages.insert({
 	"shortName": "sk",
 	"flagFile": "img/flag/sk.png",
 	"culture": "sk-SK",
-	"wage": 18,
-	"isActive": 1
+	"wage": NumberInt(18),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Portugues (Brasil)",
@@ -205,8 +205,8 @@ db.Languages.insert({
 	"shortName": "br",
 	"flagFile": "img/flag/br.png",
 	"culture": "pt-BR",
-	"wage": 19,
-	"isActive": 1
+	"wage": NumberInt(19),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Český",
@@ -216,8 +216,8 @@ db.Languages.insert({
 	"shortName": "cz",
 	"flagFile": "img/flag/cz.png",
 	"culture": "cs-CZ",
-	"wage": 20,
-	"isActive": 1
+	"wage": NumberInt(20),
+	"isActive": true
 });
 db.Languages.insert({
 	"name": "Belgium",
@@ -227,6 +227,6 @@ db.Languages.insert({
 	"shortName": "be",
 	"flagFile": "img/flag/be.png",
 	"culture": "fr-BE",
-	"wage": 21,
-	"isActive": 1
+	"wage": NumberInt(21),
+	"isActive": true
 });

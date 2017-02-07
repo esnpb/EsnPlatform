@@ -1,83 +1,36 @@
 import React from 'react';
+import ShortId from 'shortid';
 
 export default function TableBody(props) {
+  const tableRows = props.rows.map((row, rowIndex) => {
+    const rowClass = `${row.class} ${rowIndex % 2 === 1 ? 'odd' : 'even'}`;
+    return (
+      <tr key={ShortId.generate()} class={rowClass} role="row"> {
+        row.cells.map(cell =>
+          <td
+            key={ShortId.generate()}
+            colSpan={cell.colSpan}
+            rowSpan={cell.rowSpan}
+            class={cell.class}
+          >
+            {cell.value}
+          </td>,
+        )
+      }
+      </tr>);
+  });
   return (
     <tbody>
-      <tr class="gradeA odd" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Firefox 1.0</td>
-        <td>Win 98+ / OSX.2+</td>
-        <td class="center">1.7</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA even" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Firefox 1.5</td>
-        <td>Win 98+ / OSX.2+</td>
-        <td class="center">1.8</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA odd" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Firefox 2.0</td>
-        <td>Win 98+ / OSX.2+</td>
-        <td class="center">1.8</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA even" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Firefox 3.0</td>
-        <td>Win 2k+ / OSX.3+</td>
-        <td class="center">1.9</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA odd" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Camino 1.0</td>
-        <td>OSX.2+</td>
-        <td class="center">1.8</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA even" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Camino 1.5</td>
-        <td>OSX.3+</td>
-        <td class="center">1.8</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA odd" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Netscape 7.2</td>
-        <td>Win 95+ / Mac OS 8.6-9.2</td>
-        <td class="center">1.7</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA even" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Netscape Browser 8</td>
-        <td>Win 98SE+</td>
-        <td class="center">1.7</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA odd" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Netscape Navigator 9</td>
-        <td>Win 98+ / OSX.2+</td>
-        <td class="center">1.8</td>
-        <td class="center">A</td>
-      </tr>
-      <tr class="gradeA even" role="row">
-        <td class="sorting_1">Gecko</td>
-        <td>Mozilla 1.0</td>
-        <td>Win 95+ / OSX.1+</td>
-        <td class="center">1</td>
-        <td class="center">A</td>
-      </tr>
+      {tableRows}
     </tbody>
   );
 }
 
 TableBody.propTypes = {
   // your propTypes here
-  title: React.PropTypes.string.isRequired,
+  rows: React.PropTypes.arrayOf(React.PropTypes.object),
+};
+
+TableBody.defaultProps = {
+  rows: [],
 };

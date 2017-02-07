@@ -1,34 +1,37 @@
 import React from 'react';
 import TableToolbar from './Table/TableToolbar';
-import TableGrid from './Table/TableGrid';
+import Table from './Table/Table';
 import TableHeader from './Table/TableHeader';
 import TableBody from './Table/TableBody';
-import TablePager from './Table/TablePager';
 import TableFooter from './Table/TableFooter';
+import TablePager from './Table/TablePager';
 
-export default function Table(props) {
+export default function AdvancedTable(props) {
+  const allClasses = `dataTables_wrapper form-inline dt-bootstrap no-footer ${props.classes}`;
   return (
-    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+    <div class={allClasses}>
       {props.children}
     </div>
   );
 }
 
-Table.propTypes = {
+AdvancedTable.propTypes = {
   // your propTypes here
   classes: React.PropTypes.string,
+  children: React.PropTypes.node,
 };
 
-Table.defaultProps = {
+AdvancedTable.defaultProps = {
   classes: '',
-}
+  children: null,
+};
 
 export {
-  Table,
+  AdvancedTable,
   TableToolbar,
-  TableGrid,
+  Table,
   TableHeader,
   TableBody,
   TableFooter,
-  TablePager
+  TablePager,
 };

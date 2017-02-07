@@ -6,7 +6,8 @@ export default function TableGrid(props) {
       width="100%"
       class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
       role="grid"
-      aria-describedby="dataTables-example_info">
+      aria-describedby="dataTables-example_info"
+    >
       {props.children}
     </table>
   );
@@ -14,5 +15,9 @@ export default function TableGrid(props) {
 
 TableGrid.propTypes = {
   // your propTypes here
-  //title: React.PropTypes.string.isRequired,
+  children: React.PropTypes.node,
+};
+
+TableGrid.defaultProps = {
+  children: null,
 };

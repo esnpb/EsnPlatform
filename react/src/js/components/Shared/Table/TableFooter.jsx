@@ -1,12 +1,11 @@
 import React from 'react';
 
-export default function TableFooter(props) {
+export default function TableFooter() {
   return (
-    <tr></tr>
+    <tr />
   );
 }
 
 TableFooter.propTypes = {
   // your propTypes here
-  //title: React.PropTypes.string.isRequired,
 };

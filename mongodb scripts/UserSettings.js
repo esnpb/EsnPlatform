@@ -7,14 +7,14 @@ db.UserSettings.insert([{
 		"googleId": undefined,
 	},
 	"preferedLanguage": "pl",
-	"defaultStartScreen": "\dashboard",
+	"defaultStartScreen": "\\dashboard",
 	"preferedPagerSize": NumberInt(20),
 	"timeZone": "CET",
 }, {
 	"userName": "admin",
 	"cas": undefined,
 	"preferedLanguage": "en",
-	"defaultStartScreen": "\tables",
+	"defaultStartScreen": "\\tables",
 	"preferedPagerSize": NumberInt(25),
 	"timeZone": "UTC",
 }]);

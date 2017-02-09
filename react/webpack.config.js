@@ -6,23 +6,23 @@ module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   entry: "./js/app.jsx",
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'eslint'
-      }
-    ],
-    loaders: [
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: { configFile: './.eslintrc' }
+      },
       {
         test: /\.(js|jsx)?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: ['babel-loader'],
-        query: {
+        loader: 'babel-loader',
+        options: {
           presets: ['react', 'es2015', 'stage-0', 'airbnb'],
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
         }
@@ -33,12 +33,7 @@ module.exports = {
     path: __dirname + "/src/",
     filename: "app.min.js"
   },
-  eslint: {
-    configFile: './.eslintrc'
-  },
   plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
 };

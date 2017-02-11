@@ -1,4 +1,5 @@
 import React from 'react';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { connect } from 'react-redux';
 import { getUsers } from '../actions/userActions';
 import { getUserSettings } from '../actions/userSettingActions';
@@ -16,20 +17,22 @@ const mapStateToProps = (store) => {
 
 @connect(mapStateToProps) // @ decorator działa troche jak higher order component
 export default class UsersList extends React.Component {
-  constructor() {
-    super();
-    showEditUserModal = showEditUserModal.bind(this);
-  }
-
   propTypes = {
-    children: React.PropTypes.node,
     dispatch: React.PropTypes.func,
+    users: React.PropTypes.arrayOf(React.PropTypes.object),
+    userSettings: React.PropTypes.arrayOf(React.PropTypes.object),
   };
 
   defaultProps = {
-    children: null,
     dispatch: null,
+    users: {},
+    userSettings: {},
   };
+
+  constructor() {
+    super();
+    this.showEditUserModal = this.showEditUserModal.bind(this);
+  }
 
   componentWillMount() {
     this.props.dispatch(getUsers());
@@ -53,7 +56,11 @@ export default class UsersList extends React.Component {
           }
         }
       }
-      userList.push(<tr key={user._id}>
+      userList.push({
+        ...user,
+        ...setting,
+      });
+      /*userList.push(<tr key={user._id}>
         <td>{user.userName}</td>
         <td>{user.email}</td>
         <td>{user.isApproved}</td>
@@ -64,32 +71,23 @@ export default class UsersList extends React.Component {
         <td>{setting ? setting.defaultStartScreen : ''}</td>
         <td>{setting ? setting.preferedPagerSize : ''}</td>
         <td>{setting ? setting.timeZone : ''}</td>
-        <td><button onClick={showEditUserModal}></button></td>
-      </tr>);
+        <td></td>
+      </tr>);*/
     }
 
     return (
       <div>
         users list!!!!
-        <table>
-          <thead>
-            <tr>
-              <th>User name</th>
-              <th>Email</th>
-              <th>Is approved</th>
-              <th>Is locked out</th>
-              <th>Create date</th>
-              <th>Last login date</th>
-              <th>Language</th>
-              <th>Start screen</th>
-              <th>Pager size</th>
-              <th>Time zone</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userList}
-          </tbody>
-        </table>
+        <BootstrapTable
+          data={[{_id: 1, userName:'test1', email: 'email1'},
+          {_id: 2, userName:'test2', email: 'email2'},
+        {_id: 3, userName:'test3', email: 'email3'}]}
+          hover
+        >
+          <TableHeaderColumn dataField="_id" isKey>ID</TableHeaderColumn>
+          <TableHeaderColumn dataField="userName">User Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="email">Email</TableHeaderColumn>
+        </BootstrapTable>
       </div>
     );
   }

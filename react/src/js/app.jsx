@@ -7,6 +7,13 @@ import ReactDOM from 'react-dom';
 import routes from './routes';
 // Redux store
 import store from './store';
+// bundled styles
+import '../theme/vendor/bootstrap/css/bootstrap.min.css';
+import '../theme/dist/css/sb-admin-2.css';
+import '../theme/vendor/font-awesome/css/font-awesome.min.css';
+import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+//bundled images
+import '../favicon.ico';// 
 
 const app = document.getElementById('app');
 

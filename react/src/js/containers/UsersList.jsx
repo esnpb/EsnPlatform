@@ -3,6 +3,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { connect } from 'react-redux';
 import { getUsers } from '../actions/userActions';
 import { getUserSettings } from '../actions/userSettingActions';
+import CrudButtons from '../components/Table/CrudButtons';
 
 const mapStateToProps = (store) => {
   const {
@@ -31,7 +32,12 @@ export default class UsersList extends React.Component {
 
   constructor() {
     super();
-    this.showEditUserModal = this.showEditUserModal.bind(this);
+    // this.showEditUserModal = this.showEditUserModal.bind(this);
+
+    this.onDelete = this.onDelete.bind(this);
+    this.onEdit = this.onEdit.bind(this);
+    this.itemSelection = this.itemSelection.bind(this);
+    this.itemManipulationButtons = this.itemManipulationButtons.bind(this);
   }
 
   componentWillMount() {
@@ -39,8 +45,22 @@ export default class UsersList extends React.Component {
     this.props.dispatch(getUserSettings());
   }
 
-  showEditUserModal() {
+  onDelete(a) {
+    console.log('delete', a, this);
+  }
 
+  onEdit(a) {
+    console.log('edit', a, this);
+  }
+
+  itemSelection() {
+    console.log('selection', this);
+    return (<input type="checkbox" />);
+  }
+
+  itemManipulationButtons(cell, row) {
+    console.log('coll,row', cell, row);
+    return (<CrudButtons onDelete={this.onDelete} onEdit={this.onEdit} />);
   }
 
   render() {
@@ -60,33 +80,23 @@ export default class UsersList extends React.Component {
         ...user,
         ...setting,
       });
-      /*userList.push(<tr key={user._id}>
-        <td>{user.userName}</td>
-        <td>{user.email}</td>
-        <td>{user.isApproved}</td>
-        <td>{user.isLockedOut}</td>
-        <td>{user.createDate}</td>
-        <td>{user.lastLoginDate}</td>
-        <td>{setting ? setting.preferedLanguage : ''}</td>
-        <td>{setting ? setting.defaultStartScreen : ''}</td>
-        <td>{setting ? setting.preferedPagerSize : ''}</td>
-        <td>{setting ? setting.timeZone : ''}</td>
-        <td></td>
-      </tr>);*/
     }
 
     return (
       <div>
         users list!!!!
         <BootstrapTable
-          data={[{_id: 1, userName:'test1', email: 'email1'},
-          {_id: 2, userName:'test2', email: 'email2'},
-        {_id: 3, userName:'test3', email: 'email3'}]}
+          data={userList}
+          options={{ noDataText: 'no users' }}
+          selectRow={{ mode: 'checkbox', bgColor: '#aaa' }}
           hover
+          striped
+          pagination
         >
           <TableHeaderColumn dataField="_id" isKey>ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="userName">User Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="email">Email</TableHeaderColumn>
+          <TableHeaderColumn dataField="userName" dataSort>User Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="email" dataSort>Email</TableHeaderColumn>
+          <TableHeaderColumn dataField="_id" dataFormat={this.itemManipulationButtons} />
         </BootstrapTable>
       </div>
     );

@@ -7,6 +7,7 @@ import EmptyLayout from './layouts/EmptyLayout';
 import Dashboard from './containers/Dashboard';
 import Tables from './containers/Tables';
 import UsersList from './containers/UsersList';
+import UserEdit from './containers/UserEdit';
 import Charts from './containers/Charts';
 import LoginContainer from './containers/Login';
 import NotFound from './containers/NotFound';
@@ -17,6 +18,7 @@ export default [
     <Route path="tables" component={Tables} />
     <Route path="charts" component={Charts} />
     <Route path="users" component={UsersList} />
+    <Route path="users/:userName" component={UserEdit} />
   </Route>,
   <Route path="/" component={EmptyLayout}>
     <Route path="login" component={LoginContainer} />

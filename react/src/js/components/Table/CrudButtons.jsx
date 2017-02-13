@@ -1,8 +1,18 @@
 import React from 'react';
 
 export default function CrudButtons(props) {
-  const onDelete = props.onDelete !== undefined ? props.onDelete.bind(this) : undefined;
-  const onEdit = props.onEdit !== undefined ? props.onEdit.bind(this) : undefined;
+  const onDelete = (a, b, c) => {
+    if (props.onDelete) {
+      props.onDelete.call(this, props.cell, props.row, a, b, c);
+    }
+  };
+
+  const onEdit = (a, b, c) => {
+    if (props.onEdit) {
+      props.onEdit.call(this, props.cell, props.row, a, b, c);
+    }
+  };
+
   return (
     <div >
       {
@@ -19,6 +29,7 @@ export default function CrudButtons(props) {
         onDelete ?
           <button
             type="button"
+            data-toggle="modal"
             class="btn btn-circle btn-outline btn-danger"
             onClick={onDelete}
           >
@@ -30,12 +41,15 @@ export default function CrudButtons(props) {
 }
 
 CrudButtons.propTypes = {
-  // your propTypes here
-  onDelete: React.PropTypes.bool,
-  onEdit: React.PropTypes.bool,
+  onDelete: React.PropTypes.func,
+  onEdit: React.PropTypes.func,
+  cell: React.PropTypes.string.isRequired,
+  row: React.PropTypes.shape({}).isRequired,
 };
 
 CrudButtons.defaultProps = {
-  onDelete: true,
-  onEdit: true,
+  onDelete: null,
+  onEdit: null,
+  cell: null,
+  row: null,
 };

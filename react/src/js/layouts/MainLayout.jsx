@@ -33,23 +33,28 @@ const mapStateToProps = (store) => {
 
 @connect(mapStateToProps) // @ decorator działa troche jak higher order component
 export default class MainLayout extends React.Component {
-  propTypes = {
+  static propTypes = {
     children: React.PropTypes.node,
     dispatch: React.PropTypes.func,
-    menuItems: React.PropTypes.arrayOf(React.PropTypes.object),
-    notifications: React.PropTypes.arrayOf(React.PropTypes.object),
-    // users: React.PropTypes.arrayOf(React.PropTypes.object),
+    menuItems: React.PropTypes.shape({
+      byId: React.PropTypes.object,
+      allIds: React.PropTypes.arrayOf(React.PropTypes.string),
+    }),
+    notifications: React.PropTypes.shape({
+      byId: React.PropTypes.object,
+      allIds: React.PropTypes.arrayOf(React.PropTypes.string),
+    }),
     settings: React.PropTypes.shape({
       language: React.PropTypes.string,
     }),
     currentUser: React.PropTypes.string,
   };
 
-  defaultProps = {
+  static defaultProps = {
     children: null,
     dispatch: null,
-    menuItems: null,
-    notifications: null,
+    menuItems: { byId: {}, allIds: [] },
+    notifications: { byId: {}, allIds: [] },
     // users: null,
     settings: {
       language: 'gb',

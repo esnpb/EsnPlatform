@@ -18,26 +18,30 @@ const mapStateToProps = (store) => {
 
 @connect(mapStateToProps) // @ decorator działa troche jak higher order component
 export default class UsersList extends React.Component {
-  propTypes = {
+  static propTypes = {
     dispatch: React.PropTypes.func,
-    users: React.PropTypes.arrayOf(React.PropTypes.object),
-    userSettings: React.PropTypes.arrayOf(React.PropTypes.object),
+    users: React.PropTypes.shape({
+      byId: React.PropTypes.object,
+      allIds: React.PropTypes.arrayOf(React.PropTypes.string),
+    }),
+    userSettings: React.PropTypes.shape({
+      byId: React.PropTypes.object,
+      allIds: React.PropTypes.arrayOf(React.PropTypes.string),
+    }),
   };
 
-  defaultProps = {
+  static defaultProps = {
     dispatch: null,
-    users: {},
-    userSettings: {},
+    users: { byId: {}, allIds: [] },
+    userSettings: { byId: {}, allIds: [] },
   };
 
-  constructor() {
-    super();
-    // this.showEditUserModal = this.showEditUserModal.bind(this);
-
+  constructor(props) {
+    super(props);
     this.onDelete = this.onDelete.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.itemSelection = this.itemSelection.bind(this);
-    this.itemManipulationButtons = this.itemManipulationButtons.bind(this);
+    this.buttonsFormatter = this.buttonsFormatter.bind(this);
   }
 
   componentWillMount() {
@@ -45,22 +49,22 @@ export default class UsersList extends React.Component {
     this.props.dispatch(getUserSettings());
   }
 
-  onDelete(a) {
-    console.log('delete', a, this);
+  onDelete(cell, row) {
+    console.log('cell', cell);
+    console.log('row', row);
+    // dispatch user_delete table should rerender after  reloading data
   }
 
-  onEdit(a) {
-    console.log('edit', a, this);
+  onEdit(cell, row) {
+    this.props.router.push('/users/' + row.userName);
   }
 
   itemSelection() {
-    console.log('selection', this);
     return (<input type="checkbox" />);
   }
 
-  itemManipulationButtons(cell, row) {
-    console.log('coll,row', cell, row);
-    return (<CrudButtons onDelete={this.onDelete} onEdit={this.onEdit} />);
+  buttonsFormatter(cell, row) {
+    return (<CrudButtons cell={cell} row={row} onDelete={this.onDelete} onEdit={this.onEdit} />);
   }
 
   render() {
@@ -87,7 +91,9 @@ export default class UsersList extends React.Component {
         users list!!!!
         <BootstrapTable
           data={userList}
-          options={{ noDataText: 'no users' }}
+          options={{
+            noDataText: 'no users',
+            handleConfirmDeleteRow: this.onDelete }}
           selectRow={{ mode: 'checkbox', bgColor: '#aaa' }}
           hover
           striped
@@ -96,8 +102,9 @@ export default class UsersList extends React.Component {
           <TableHeaderColumn dataField="_id" isKey>ID</TableHeaderColumn>
           <TableHeaderColumn dataField="userName" dataSort>User Name</TableHeaderColumn>
           <TableHeaderColumn dataField="email" dataSort>Email</TableHeaderColumn>
-          <TableHeaderColumn dataField="_id" dataFormat={this.itemManipulationButtons} />
+          <TableHeaderColumn dataField="_id" dataFormat={this.buttonsFormatter} />
         </BootstrapTable>
+
       </div>
     );
   }

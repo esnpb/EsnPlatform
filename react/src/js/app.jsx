@@ -1,6 +1,6 @@
+// react and redux
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-// react and redux
 import React from 'react';
 import ReactDOM from 'react-dom';
 // router
@@ -14,6 +14,10 @@ import '../theme/vendor/font-awesome/css/font-awesome.min.css';
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 // bundled images
 import '../favicon.ico';
+// Polyfills
+import Polyfills from './helpers/Polyfills';
+
+Polyfills();
 
 const app = document.getElementById('app');
 

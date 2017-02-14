@@ -1,5 +1,11 @@
 import * as reqStatus from '../constants/RequestStatuses';
-import { GET_USERSETTINGS, ADD_USERSETTING, EDIT_USERSETTING, REMOVE_USERSETTING } from '../constants/ActionTypes';
+import {
+  CLEAR_USERSETTINGS,
+  GET_USERSETTINGS,
+  ADD_USERSETTING,
+  EDIT_USERSETTING,
+  REMOVE_USERSETTING
+} from '../constants/ActionTypes';
 import { omit, normalizePayload } from '../helpers/objectManipulation';
 
 const initialState = {
@@ -10,7 +16,12 @@ const initialState = {
 const getUserSettingReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
-      // nothing ?
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: true,
+      };
       break;
     }
     case reqStatus.DONE: {
@@ -18,13 +29,19 @@ const getUserSettingReducer = (state, action) => {
         return {
           byId: normalizePayload(action.payload),
           allIds: [...action.payload.map(x => x._id)],
-          fetching: false,
+          busy: false,
           fetched: true,
         };
       }
       break;
     }
     case reqStatus.ERROR: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      };
       break;
     }
     default: {
@@ -118,6 +135,14 @@ const removeUserSettingReducer = (state, action) => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_USERSETTINGS: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      }
+    }
     case GET_USERSETTINGS: {
       return getUserSettingReducer(state, action);
     }

@@ -4,6 +4,8 @@ import * as status from '../constants/RequestStatuses';
 
 const apiResourcePath = 'http://localhost:3000/api/usersettings';
 
+const clearUserSettingsList =
+  () => ({ type: types.CLEAR_USERSETTINGS });
 // action sub-creators, only to be used by asynchronous action creators
 const getUserSettingsRequest =
   criteria => ({ type: types.GET_USERSETTINGS, status: status.REQUEST, payload: criteria });
@@ -37,7 +39,7 @@ const removeUserSettingError =
 export function getUserSettings(criteria) {
   return (dispatch) => {
     dispatch(getUserSettingsRequest(criteria));
-    return axios.get(apiResourcePath, criteria)
+    return axios.get(apiResourcePath, { params: criteria })
       .then((response) => {
         dispatch(getUserSettingsDone(response.data));
       })

@@ -4,7 +4,9 @@ import * as status from '../constants/RequestStatuses';
 
 const apiResourcePath = 'http://localhost:3000/api/users';
 
-// action sub-creators, only to be used by asynchronous action creators
+const clearUsersList =
+  () => ({ type: types.CLEAR_USERS });
+  // action sub-creators, only to be used by asynchronous action creators
 const getUsersRequest =
   criteria => ({ type: types.GET_USERS, status: status.REQUEST, payload: criteria });
 const getUsersDone =
@@ -37,7 +39,7 @@ const removeUserError =
 export function getUsers(criteria) {
   return (dispatch) => {
     dispatch(getUsersRequest(criteria));
-    return axios.get(apiResourcePath, criteria)
+    return axios.get(apiResourcePath, { params: criteria })
       .then((response) => {
         dispatch(getUsersDone(response.data));
       })

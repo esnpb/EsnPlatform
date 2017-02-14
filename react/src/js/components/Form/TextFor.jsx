@@ -10,9 +10,10 @@ export default function TextFor(props) {
       <input
         name={controlName}
         class="form-control"
-        readoOnly={props.readOnly}
+        readOnly={props.readOnly}
         value={props.item[controlName]}
         type={props.type}
+        onChange={props.onChange}
       />
     </div>
   );
@@ -22,10 +23,20 @@ TextFor.propTypes = {
   // your propTypes here
   field: React.PropTypes.string.isRequired,
   item: React.PropTypes.shape({}).isRequired,
+  label: React.PropTypes.string,
+  name: React.PropTypes.string,
+  readOnly: React.PropTypes.bool,
+  type: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func.isRequired,
 };
 
 TextFor.defaultProps = {
   //your default props here
   field: '',
   item: {},
+  label: '',
+  name: '',
+  readOnly: false,
+  type: '',
+  onChange: null,
 }

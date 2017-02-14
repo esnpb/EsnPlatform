@@ -1,5 +1,11 @@
 import * as reqStatus from '../constants/RequestStatuses';
-import { GET_NOTIFICATIONS, ADD_NOTIFICATION, EDIT_NOTIFICATION, REMOVE_NOTIFICATION } from '../constants/ActionTypes';
+import {
+  CLEAR_NOTIFICATIONS,
+  GET_NOTIFICATIONS,
+  ADD_NOTIFICATION,
+  EDIT_NOTIFICATION,
+  REMOVE_NOTIFICATION
+} from '../constants/ActionTypes';
 import { omit, normalizePayload } from '../helpers/objectManipulation';
 
 const initialState = {
@@ -10,7 +16,12 @@ const initialState = {
 const getNotificationReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
-      // nothing ?
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: true,
+      };
       break;
     }
     case reqStatus.DONE: {
@@ -18,13 +29,19 @@ const getNotificationReducer = (state, action) => {
         return {
           byId: normalizePayload(action.payload),
           allIds: [...action.payload.map(x => x._id)],
-          fetching: false,
+          busy: false,
           fetched: true,
         };
       }
       break;
     }
     case reqStatus.ERROR: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      };
       break;
     }
     default: {
@@ -118,6 +135,14 @@ const removeNotificationReducer = (state, action) => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_NOTIFICATIONS: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      }
+    }
     case GET_NOTIFICATIONS: {
       return getNotificationReducer(state, action);
     }

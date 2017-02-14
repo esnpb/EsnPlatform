@@ -1,5 +1,11 @@
 import * as reqStatus from '../constants/RequestStatuses';
-import { GET_LANGUAGES, ADD_LANGUAGE, EDIT_LANGUAGE, REMOVE_LANGUAGE } from '../constants/ActionTypes';
+import {
+  CLEAR_LANGUAGES,
+  GET_LANGUAGES,
+  ADD_LANGUAGE,
+  EDIT_LANGUAGE,
+  REMOVE_LANGUAGE
+} from '../constants/ActionTypes';
 import { omit, normalizePayload } from '../helpers/objectManipulation';
 
 const initialState = {
@@ -10,7 +16,12 @@ const initialState = {
 const getLanguageReducer = (state, action) => {
   switch (action.status) {
     case reqStatus.REQUEST: {
-      // nothing ?
+      return {
+        byId: {},
+        allIds: [],
+        busy: true,
+        fetched: false,
+      };
       break;
     }
     case reqStatus.DONE: {
@@ -18,11 +29,19 @@ const getLanguageReducer = (state, action) => {
         return {
           byId: normalizePayload(action.payload),
           allIds: [...action.payload.map(x => x._id)],
+          busy: false,
+          fetched: true,
         };
       }
       break;
     }
     case reqStatus.ERROR: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      };
       break;
     }
     default: {
@@ -116,6 +135,14 @@ const removeLanguageReducer = (state, action) => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_LANGUAGES: {
+      return {
+        byId: {},
+        allIds: [],
+        busy: false,
+        fetched: false,
+      }
+    }
     case GET_LANGUAGES: {
       return getLanguageReducer(state, action);
     }

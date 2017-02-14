@@ -7,8 +7,6 @@ import { getNotifications } from '../actions/notificationActions';
 
 const mapStateToProps = (store) => {
   const {
-    members,
-    erasmuses,
     languages,
     menuItems,
     menuItemRenditions,
@@ -16,14 +14,11 @@ const mapStateToProps = (store) => {
     users,
   } = store;
   return { // ten obiekt będzie == this.props wewnatrz Layouta poniżej
-    members,
-    erasmuses,
     languages,
     menuItems,
     menuItemRenditions,
     notifications,
     users,
-    errors: null,
     settings: {
       language: 'gb',
     },

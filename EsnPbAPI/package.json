@@ -1,0 +1,22 @@
+{
+  "name": "esn_pb_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-jwt": "^5.1.0",
+    "lodash.omit": "^4.5.0",
+    "mongoose": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js"
+  },
+  "author": "karol l",
+  "license": "ISC"
+}

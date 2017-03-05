@@ -1,27 +1,33 @@
 import React from 'react';
 import { splitCamelCase } from '../../helpers/strings';
 
-export default function TextFor(props) {
+export default function DropdownFor(props) {
   const labelText = props.label || splitCamelCase(props.field);
   const controlName = props.name || props.field;
+  const data = props.data.map(item =>
+    <option
+      key={item.val}
+      value={item.val}
+      selected={props.value == item.val}
+    >{item.text}</option>
+  );
   return (
     <div class="form-group">
       <label htmlFor={controlName}>{labelText}</label>
-      <input
-        name={controlName}
-        class="form-control"
-        readOnly={props.readOnly}
-        value={props.type === 'password' ? '' : props.item[controlName]}
-        type={props.type}
-        onChange={props.onChange}
-      />
+      <select class="form-control">
+        {data}
+      </select>
     </div>
   );
 }
 
-TextFor.propTypes = {
+DropdownFor.propTypes = {
   // your propTypes here
   field: React.PropTypes.string.isRequired,
+  data: React.PropTypes.arrayOf(React.PropTypes.shape({
+    val: React.PropTypes.string.isRequired,
+    text: React.PropTypes.string,
+  })).isRequired,
   item: React.PropTypes.shape({}).isRequired,
   label: React.PropTypes.string,
   name: React.PropTypes.string,
@@ -30,9 +36,10 @@ TextFor.propTypes = {
   onChange: React.PropTypes.func.isRequired,
 };
 
-TextFor.defaultProps = {
+DropdownFor.defaultProps = {
   //your default props here
   field: '',
+  data: [],
   item: {},
   label: '',
   name: '',

@@ -1,9 +1,11 @@
 import React from 'react';
 
 export default function ControlFor(props) {
-  const { value } = props;
+  const { value, data } = props;
   let result = null;
-  if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/.test(value)) {
+  if (data) {
+    return <Dropdown />
+  } else if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/.test(value)) {
     // is float
     return <NumericFor />
   } else if (!isNaN(new Date(value).getDate())) {

@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getLanguages } from '../actions/languageActions';
 import { getUsers } from '../actions/userActions';
 import { getUserSettings } from '../actions/userSettingActions';
 import { Panel, PanelHeader, PanelBody } from '../components/Shared/Panel';
 import TextFor from '../components/Form/TextFor';
+import DropdownFor from '../components/Form/DropdownFor';
 
 const mapStateToProps = (store) => {
   const {
@@ -52,6 +54,10 @@ export default class UserEdit extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       item: {},
+      languages: props.languages.allIds.map(lang => ({
+        val: props.languages.byId[lang]._id,
+        text: props.languages.byId[lang].name,
+      })),
     };
     console.log('constructor', this.state);
   }
@@ -59,13 +65,15 @@ export default class UserEdit extends React.Component {
   componentWillMount() {
     console.log('cwm', this.state);
     console.log('componentWillMount');
+    this.props.dispatch(getLanguages());
     this.props.dispatch(getUsers({ userName: this.props.params.userName }));
     this.props.dispatch(getUserSettings({ userName: this.props.params.userName }));
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     event.preventDefault();
-
+    console.log('this', this.refs);
+    console.log('prp', event);
     // this.props.dispatch(getUsers({ userName: this.props.params.userName }));
     // this.props.dispatch(getUserSettings({ userName: this.props.params.userName }));
   }
@@ -81,20 +89,30 @@ export default class UserEdit extends React.Component {
       item: {
         ...this.state.item,
         [event.target.name]: event.target.value,
-      }
+      },
+      languages: [
+        ...this.state.languages,
+      ]
     });
   }
 
-  componentWillReceiveProps(prop) {
-    if (this.props.users.fetched && this.props.userSettings.fetched) {
+  componentWillReceiveProps() {
+    console.log('will receive props', this.props);
+    if (this.props.users.fetched
+      && this.props.userSettings.fetched
+      && this.props.languages.fetched) {
       console.log('no to elo ;)');
-      const item = {
-        ...this.props.userSettings.byId[this.props.userSettings.allIds[0]],
-        ...this.props.users.byId[this.props.users.allIds[0]],
-      };
       this.setState({
-        ...this.state,
-        item
+        item: {
+          ...this.props.userSettings.byId[this.props.userSettings.allIds[0]],
+          ...this.props.users.byId[this.props.users.allIds[0]],
+        },
+        languages: [
+          ...this.props.languages.allIds.map(lang => ({
+            val: this.props.languages.byId[lang]._id,
+            text: this.props.languages.byId[lang].name,
+          })),
+        ],
       });
     }
   }
@@ -102,6 +120,7 @@ export default class UserEdit extends React.Component {
   render() {
     console.log('render', this.state);
     const item = this.state.item;
+    const langs = this.state.languages;
     const stylePadding = { paddingTop: 10 };
     const styleMargin = { marginTop: 10 };
     const styleBtnWidth = { width: '100%' };
@@ -126,24 +145,16 @@ export default class UserEdit extends React.Component {
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-group">
-                  <label>Password</label>
-                  <input class="form-control" type="password" />
-                </div>
-                <div class="form-group">
-                  <label>Confirm password</label>
-                  <input class="form-control" type="password" />
-                </div>
+                <TextFor field="password" item={item} readOnly onChange={this.handleChange} />
+                <TextFor field="password" item={item} label="Confirm password" onChange={this.handleChange} />
               </div>
               <div class="col-md-3">
-                <div class="form-group">
-                  <label>Prefered language</label>
-                  <select class="form-control">
-                    <option>PL</option>
-                    <option>EN</option>
-                    <option>GE</option>
-                  </select>
-                </div>
+                <DropdownFor
+                  field="preferedLanguage"
+                  item={item}
+                  onChange={this.handleChange}
+                  data={langs}
+                />
                 <div class="form-group">
                   <label>Default start screen</label>
                   <select class="form-control">
@@ -154,10 +165,12 @@ export default class UserEdit extends React.Component {
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-group">
-                  <label>Prefered table page size</label>
-                  <input class="form-control" type="text" placeholder="E-mail address" />
-                </div>
+                <TextFor
+                  field="preferedPagerSize"
+                  item={item}
+                  label="Prefered table page size"
+                  onChange={this.handleChange}
+                />
                 <div class="form-group">
                   <label>Time zone</label>
                   <select class="form-control">
@@ -170,18 +183,9 @@ export default class UserEdit extends React.Component {
             </div>
             <div class="row">
               <div class="col-md-3">
-                <div class="form-group">
-                  <label>Galaxy username</label>
-                  <input class="form-control" disabled type="text" />
-                </div>
-                <div class="form-group">
-                  <label>Facebook username</label>
-                  <input class="form-control" disabled type="text" />
-                </div>
-                <div class="form-group">
-                  <label>Google username</label>
-                  <input class="form-control" disabled type="text" />
-                </div>
+                <TextFor field="galaxyUsername" item={item} readOnly onChange={this.handleChange} />
+                <TextFor field="facebookUsername" item={item} readOnly onChange={this.handleChange} />
+                <TextFor field="googleUsername" item={item} readOnly onChange={this.handleChange} />
               </div>
               <div class="col-md-3">
                 <div class="form-group">
@@ -214,16 +218,12 @@ export default class UserEdit extends React.Component {
                     value={item.lastPasswordChangedDate}
                     />
                 </div>
-                <div class="form-group">
-                  <label htmlFor="failedPasswordAttemptCount">Failed passwords attempts</label>
-                  <input
-                    name="failedPasswordAttemptCount"
-                    class="form-control"
-                    disabled
-                    type="text"
-                    value={item.failedPasswordAttemptCount}
-                    />
-                </div>
+                <TextFor
+                  field="failedPasswordAttemptCount"
+                  item={item}
+                  readOnly
+                  onChange={this.handleChange}
+                />
               </div>
             </div>
           </PanelBody>
@@ -234,6 +234,7 @@ export default class UserEdit extends React.Component {
               type="submit"
               class="btn btn-success"
               style={styleBtnWidth}
+              onClick={this.handleSubmit}
             >
               Save
             </button>
